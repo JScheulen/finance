@@ -8,26 +8,44 @@
     <link rel="stylesheet" href="{% static 'lib/adminelt/plugins/fontawesome-free/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'lib/adminelt/css/adminlte.css' %}">
     <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <link href='https://fonts.googleapis.com/css?family=Barlow Semi Condensed' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <link rel="shortcut icon" type="image/png" href="{% static 'lib/adminelt/img/AdminLTELogo.png' %}">
 
     <style>
         body {
-        font-family: 'Barlow Semi Condensed';font-size: 22px;
+        font-family: 'Open Sans';font-size: 20px;
         }
         label {
-            font-size: 20px;
+            font-size: 18px;
         }
+        nav {
+        font-family:'Lato';font-size: 18px;
+        }
+        @media screen and (max-width: 600px) {
+  .nav a:not(:first-child) {display: none;}
+  .nav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
     </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-light navbar-light shadow p-2" id="navbarCollapse">
     <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <i class="bx bxl-python bx-sm text-dark h1"></i>
+            <span class="h3">J</span>
+            <span class="h3 text-primary">S</span>
+        </a>
         <div class="flex-fill mx-xl-5 mb-2">
             <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center">
-                <li class="nav-item"><a href="{% url 'Calc' %}" class="nav-link text-dark">Home</a></li>
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link text-dark">Home</a></li>
                 <li class="nav-item"><a href="{% url 'exchange' %}" class="nav-link text-dark">Calculadora</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-dark">Simulador de Credito</a></li>
+                <li class="nav-item"><a href="{% url 'Calc' %}" class="nav-link text-dark">Simulador de Credito</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-dark">About Us</a></li>
             </ul>
         </div>

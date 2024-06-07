@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from fincal.views import calculadora, get_number, currency_c, tasa_cambio, subir_archivo, actualizaPrecios
+from fincal.views import calculadora, get_number, currency_c, tasa_cambio, subir_archivo, actualizaPrecios, casa
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', calculadora, name='Calc'),
+    path('', casa, name='home'),
+    path('simulador/', calculadora, name='Calc'),
     path('resultado/', get_number, name='result'),
     path('convert/', currency_c, name='exchange'),
     path('exchange/', tasa_cambio, name='currency'),

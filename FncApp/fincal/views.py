@@ -144,4 +144,6 @@ def actualizaPrecios(request):
 
     return HttpResponse("¡Actualización de precios exitosa!")
 
+def casa(request):
 
+    return render(request, 'home.html')
