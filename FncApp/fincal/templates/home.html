@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Johnathan Scheulen</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 {% extends 'header.html' %}
@@ -43,6 +44,45 @@
 
 </div>
 
+<section class="py-5 mb-5 mt-5 shadow">
+    <div class="container">
+        <div class="row text-center pb-5">
+            <b style="font-weight: bold;font-size: 35px;" class="col-md-6 m-auto">Trabajos Recientes</b>
+        </div>
+        <div class="row gy-5 mb-4">
+            <div class="col-md-4 mb-3">
+                <a href="#" class="card border-0 shadow-lg" id="carta1">
+                    <img class="card-img" style="opacity: 0.5;" src="{% static 'lib/adminelt/img/avatar.png' %}" alt="">
+                    <div class="nuevo card-img-overlay d-flex align-items-end">
+                        <div class="text-start mb-3 ml-3 text-dark">
+                            <h2 class="card-title texto1">Primer Proyecto</h2>
+                            <p class="card-text texto1">Se realizo de esta manera</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        $('.card').on('mouseover', function(){
+            $('.nuevo').animate({
+                bottom: '100px'
+            });
+            $(".texto1").css("color", "#ffff");
+
+        });
+        $('.card').on('mouseleave', function(){
+            $('.nuevo').animate({
+                bottom: '0px',
+            });
+            $(".texto1").css("color", "#000000");
+        });
+    });
+
+</script>
 
 {% endblock %}
 
