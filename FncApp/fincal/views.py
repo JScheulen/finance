@@ -4,11 +4,11 @@ from .forms import calculoCredito, subirArchivo
 import yfinance as yf
 import numpy_financial as npf
 import pandas as pd
-from .models import Monedas
+from .models import Monedas, Proyects, ProyectImg
 import matplotlib.pyplot as plt
 import numpy as np
 import plotly.express as px
-
+from collections import defaultdict
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 
 
@@ -146,4 +146,11 @@ def actualizaPrecios(request):
 
 def casa(request):
 
-    return render(request, 'home.html')
+    portfolio = ProyectImg.objects.all()
+
+    proyecto = defaultdict(list)
+    for port in portfolio:
+        proyecto[port.proyecto].append(port)
+
+
+    return render(request, 'home.html', {'context': portfolio, 'nuevo': proyecto})

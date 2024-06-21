@@ -10,7 +10,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid text-center mt-5" >
+<div class="container-fluid text-center mt-5">
     <div class="row">
         <div class="col-xl-12">
             <div class="row">
@@ -22,7 +22,9 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <a class="btn btn-primary m-1 rounded-4" href="https://www.linkedin.com/in/johnathan-scheulen-209564256" style="width:120px">Linkedin &#129030</a>
+                    <a class="btn btn-primary m-1 rounded-4"
+                       href="https://www.linkedin.com/in/johnathan-scheulen-209564256" style="width:120px">Linkedin
+                        &#129030</a>
                     <a class="btn btn-primary m-1 rounded-4" style="width:120px">GitHub &#129030</a>
                 </div>
             </div>
@@ -50,35 +52,47 @@
             <b style="font-weight: bold;font-size: 35px;" class="col-md-6 m-auto">Trabajos Recientes</b>
         </div>
         <div class="row gy-5 mb-4">
-            <div class="col-md-4 mb-3">
-                <a href="#" class="card border-0 shadow-lg" id="carta1">
-                    <img class="card-img" style="opacity: 0.5;" src="{% static 'lib/adminelt/img/avatar.png' %}" alt="">
-                    <div class="nuevo card-img-overlay d-flex align-items-end">
-                        <div class="text-start mb-3 ml-3 text-dark">
-                            <h2 class="card-title texto1">Primer Proyecto</h2>
-                            <p class="card-text texto1">Se realizo de esta manera</p>
+
+            <div class="carousel col-md-4 mb-3" id="demo">
+                {% for img in context %}
+
+                <div class="carousel-inner border-0 shadow-lg" id="carta1">
+                    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                        <img style="opacity: 1;" src="{{ img.imgList.url }}" id="h335" class="w-100" alt="">
+                        <div class="carousel-caption mb-3 ml-3 text-dark">
+                            <h4 class="texto1 rounded-pill p-2">{{img.proyecto}}</h4>
+                            <p class="texto1 rounded-pill p-2" style="font-size: 15px;">{{img.imgDescript}}</p>
                         </div>
                     </div>
-                </a>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+
+                {% endfor %}
             </div>
+
         </div>
     </div>
 </section>
 
 <script>
     $(document).ready(function(){
-        $('.card').on('mouseover', function(){
-            $('.nuevo').animate({
-                bottom: '100px'
-            });
-            $(".texto1").css("color", "#ffff");
+        $(".texto1").hide();
+        $('.carousel-inner').on('mouseover', function(){
+            $('.carousel-caption').animate({
+                bottom: '200px',
 
-        });
-        $('.card').on('mouseleave', function(){
-            $('.nuevo').animate({
-                bottom: '0px',
             });
-            $(".texto1").css("color", "#000000");
+            $(".texto1").css("background-color", "#3455eb");
+            $(".texto1").css("color", "#ffffff");
+            $(".texto1").show();
+
+
+
         });
     });
 
