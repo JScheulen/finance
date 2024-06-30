@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col">
                     <a class="btn btn-primary m-1 rounded-4"
-                       href="https://www.linkedin.com/in/johnathan-scheulen-209564256" style="width:120px">Linkedin
+                       href="https://www.linkedin.com/in/johnathan-scheulen-209564256" target="_blank" style="width:120px">Linkedin
                         &#129030</a>
                     <a class="btn btn-primary m-1 rounded-4" style="width:120px">GitHub &#129030</a>
                 </div>
@@ -52,11 +52,12 @@
             <b style="font-weight: bold;font-size: 35px;" class="col-md-6 m-auto">Trabajos Recientes</b>
         </div>
         <div class="row gy-5 mb-4">
+            {% for item, imgaen in nuevo.items %}
+            <div class="carousel col-md-4 mb-3" id="demo{{ forloop.counter }}">
 
-            <div class="carousel col-md-4 mb-3" id="demo">
-                {% for img in context %}
 
-                <div class="carousel-inner border-0 shadow-lg" id="carta1">
+                <div class="carousel-inner border-0 shadow-lg col" id="carta1">
+                    {% for img in imgaen %}
                     <div class="carousel-item {% if forloop.first %} active {% endif %}">
                         <img style="opacity: 1;" src="{{ img.imgList.url }}" id="h335" class="w-100" alt="">
                         <div class="carousel-caption mb-3 ml-3 text-dark">
@@ -64,23 +65,25 @@
                             <p class="texto1 rounded-pill p-2" style="font-size: 15px;">{{img.imgDescript}}</p>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
+                    {% endfor %}
+                    <button class="carousel-control-prev" type="button" data-bs-target="#demo{{ forloop.counter }}" data-bs-slide="prev">
+                        <span class="fas fa-angle-left" style="color:black;font-size: 28px"></span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
+                    <button class="carousel-control-next" type="button" data-bs-target="#demo{{ forloop.counter }}" data-bs-slide="next">
+                        <span class="fas fa-angle-right" style="color:black;font-size: 28px"></span>
                     </button>
                 </div>
-
-                {% endfor %}
             </div>
-
+            {% endfor %}
         </div>
+
+
     </div>
 </section>
 
 <script>
     $(document).ready(function(){
+
         $(".texto1").hide();
         $('.carousel-inner').on('mouseover', function(){
             $('.carousel-caption').animate({

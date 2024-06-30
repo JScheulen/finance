@@ -148,9 +148,12 @@ def casa(request):
 
     portfolio = ProyectImg.objects.all()
 
-    proyecto = defaultdict(list)
-    for port in portfolio:
-        proyecto[port.proyecto].append(port)
+    proyecto = {}
+    for item in portfolio:
+        #proyecto[str(item.proyecto)] = [item.imgList]
+        if str(item.proyecto) not in proyecto:
+            proyecto[str(item.proyecto)] = []
 
+        proyecto[str(item.proyecto)].append(item)
 
     return render(request, 'home.html', {'context': portfolio, 'nuevo': proyecto})
