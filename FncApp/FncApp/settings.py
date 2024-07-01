@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'FncApp.wsgi.application'
+WSGI_APPLICATION = 'FncApp.wsgi.app'
 
 
 # Database
